@@ -11,4 +11,4 @@ install:
   - pip install -r requirements.txt
 # command to run tests
 script:
-  - ./pytest.py `git diff --name-only HEAD^ | grep ".doc"`
+  - ./pytest.py `git diff --name-only HEAD^ --diff-filter=d | grep ".doc"`
