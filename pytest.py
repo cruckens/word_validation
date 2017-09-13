@@ -9,6 +9,6 @@ if len(sys.argv) > 1:
         document = Document(i)
         fullText = []
         [fullText.append(p.text) for p in document.paragraphs]
-        print('\nContents:\n' + '\n'.join(fullText))
+        print('\nContents:\n' + '\n'.join(fullText) + "\n----EOF----\n")
 else:
 	print("No documents were added with this commit")

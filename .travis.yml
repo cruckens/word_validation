@@ -1,22 +1,24 @@
 language: python
+
 python:
   - "3.6"
-# command to install dependencies
+
 branches:
   only:
     - master
-before_install:
-  - chmod +x pytest.py
+    
 install:
   - pip install -r requirements.txt
-# command to run tests
+
+before_script:
+  - chmod +x pytest.py
+  
 script:
   - python pytest.py `git diff --name-only HEAD^ --diff-filter=d | grep ".doc"`
-notifications: # set notification options
+  
+notifications:
   email:
     recipients:
       - v.shevchenko@student.csn.khai.edu
-
-    # change is when the repo status goes from pass to fail or vice versa
     on_success: always
     on_failure: change
