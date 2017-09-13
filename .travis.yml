@@ -2,12 +2,13 @@ language: python
 python:
   - "3.6"
 # command to install dependencies
+branches:
+  only:
+    - master
 before_install:
   - chmod +x pytest.py
 install:
   - pip install -r requirements.txt
 # command to run tests
-before_script:
-  - docs=`git diff HEAD^ HEAD | grep -o "+++.*.doc$"`
 script:
-  - ./pytest.py "$docs"
+  - ./pytest.py `git diff --name-only HEAD^ | grep ".doc"`
